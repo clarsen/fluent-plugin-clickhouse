@@ -13,6 +13,7 @@ module Fluent
     config_param :database, :string, :default => "default"
     config_param :username, :string, :default => nil
     config_param :password, :string, :default => nil, :secret => true
+    config_param :ca_file,  :string, :default => nil
 
     config_param :table, :string, :default => nil
     config_param :columns, :string, :default => nil
