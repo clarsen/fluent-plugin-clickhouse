@@ -26,5 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "test-unit"
   spec.add_runtime_dependency "fluentd"
-  spec.add_runtime_dependency "clickhouse"
+  spec.add_runtime_dependency "clickhouse", "=0.1.10lbl"
 end
