@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-clickhouse"
-  spec.version       = "0.0.1"
+  spec.version       = "0.0.1lbl"
   spec.authors       = ["Hiroki KUMAZAKI"]
   spec.email         = ["hiroki.kumazaki@gmail.com"]
 

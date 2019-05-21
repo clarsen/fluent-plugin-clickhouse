@@ -9,6 +9,7 @@ module Fluent
 
     config_param :host,     :string, :default => 'localhost'
     config_param :port,     :string, :default => 1982
+    config_param :scheme,     :string, :default => "http"
     config_param :urls,     :string, :default => nil
     config_param :database, :string, :default => "default"
     config_param :username, :string, :default => nil
@@ -51,6 +52,13 @@ module Fluent
       if conf['port']
         @config['port'] = conf['port']
       end
+      if conf['scheme']
+        @config['scheme'] = conf['scheme']
+      end
+      if conf['ca_file']
+	@config['ca_file'] = conf['ca_file']
+      end
+      log.info("configured with #{@config}")
     end
 
     def start
@@ -68,6 +76,7 @@ module Fluent
     end
 
     def write(chunk)
+
       Clickhouse.establish_connection(@config)
       Clickhouse.connection.insert_rows(@table, :names => @columns) { |rows|
         chunk.msgpack_each { |tag, time, record|
