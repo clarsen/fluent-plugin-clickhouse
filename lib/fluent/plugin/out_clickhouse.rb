@@ -56,7 +56,7 @@ module Fluent
         @config['scheme'] = conf['scheme']
       end
       if conf['ca_file']
-	@config['ca_file'] = conf['ca_file']
+      	@config['ca_file'] = conf['ca_file']
       end
       log.info("configured with #{@config}")
     end
@@ -81,6 +81,8 @@ module Fluent
       Clickhouse.connection.insert_rows(@table, :names => @columns) { |rows|
         chunk.msgpack_each { |tag, time, record|
           rows << @columns.map{|m| record[m] }
+          row = @columns.map{|m| record[m]
+          log.debug "row #{row}"
         }
         rows
       }
