@@ -81,7 +81,7 @@ module Fluent
       Clickhouse.connection.insert_rows(@table, :names => @columns) { |rows|
         chunk.msgpack_each { |tag, time, record|
           rows << @columns.map{|m| record[m] }
-          row = @columns.map{|m| record[m]
+          row = @columns.map{|m| record[m] }
           log.debug "row #{row}"
         }
         rows
