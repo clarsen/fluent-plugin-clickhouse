@@ -59,11 +59,7 @@ module Fluent
       	@config['ca_file'] = conf['ca_file']
       end
       log.info("configured with #{@config}")
-      Clickhouse.logger = method(:cllog)
-    end
-
-    def cllog(type, msg)
-      log.send(type, msg)
+      Clickhouse.logger = @log
     end
 
     def start
